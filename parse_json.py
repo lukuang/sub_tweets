@@ -27,7 +27,7 @@ def parse_tweet_json(json_file):
 
 
 def write_to_xml(dest_file,content):
-    with open(dest_dir,"w") as f:
+    with open(dest_file,"w") as f:
         f.write(content)
 
 def main():
