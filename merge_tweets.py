@@ -7,6 +7,7 @@ import json
 import sys
 import re
 import argparse
+import shutil
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
@@ -17,8 +18,10 @@ def main():
     tweets = os.walk(args.tweets_dir).next()[2]
     for old in old_tweets:
         if old not in tweets:
-            print old
-            
+            src = os.path.join(args.old_dir,old)
+            dest = os.path.join(args.tweets_dir,old)
+            shutil.copyfile(src,dest)
+
 
 
 
