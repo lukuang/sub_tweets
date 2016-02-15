@@ -9,14 +9,14 @@ import re
 from string import Template
 import argparse
 
-doc_template="""
+doc_template = Template("""
 <DOC>
 <DOCNO>$docid</DOCNO>
 <TEXT>
 $text
 </TEXT>
 </DOC>
-"""
+""")
 
 def parse_tweet_json(json_file):
     content = ""
