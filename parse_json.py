@@ -30,6 +30,7 @@ def parse_tweet_json(day,json_files,no_dup):
     else:
         all_tweets = {}
         for f in json_files:
+            print "the file is",f
             data = json.load(open(f))
             for tweet in data:
                 text=tweet["text"]
