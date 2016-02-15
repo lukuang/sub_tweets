@@ -32,7 +32,7 @@ def get_ids(list_dir,day):
         for line in f:
             line = line.rstrip()
             parts = line.split()
-            print "find id",parts[2]
+            #print "find id",parts[2]
             ids.append(parts[2])
     return ids
 
@@ -61,6 +61,7 @@ def main():
     daily_files = get_daily_files(args.source_dir)
     for day in daily_files:
         ids = get_ids(args.list_dir,day)
+        print "for %s there are %d ids" %(day,len(ids))
         tweets = get_tweets(daily_files[day],ids)
         output = os.path.join(args.dest_dir,day)
         with open(output,"w") as f:
