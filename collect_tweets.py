@@ -32,6 +32,7 @@ def get_ids(list_dir,day):
         for line in f:
             line = line.rstrip()
             parts = line.split()
+            print "find id",parts[2]
             ids.append(parts[2])
     return ids
 
