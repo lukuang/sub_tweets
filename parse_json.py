@@ -22,7 +22,7 @@ def parse_tweet_json(day,json_files,no_dup):
     content = ""
     if no_dup:
         for f in json_files:
-            data = json.load(open(f))
+            data = json.loads(open(f))
             for tweet in data:
                 text=tweet["text"]
                 text = re.sub(r'https?:\/\/.*[\r\n]*', '', text, flags=re.MULTILINE)
@@ -31,7 +31,7 @@ def parse_tweet_json(day,json_files,no_dup):
         all_tweets = {}
         for f in json_files:
             print "the file is",f
-            data = json.load(open(f))
+            data = json.loads(open(f))
             for tweet in data:
                 text=tweet["text"]
                 text = re.sub(r'https?:\/\/.*[\r\n]*', '', text, flags=re.MULTILINE)
