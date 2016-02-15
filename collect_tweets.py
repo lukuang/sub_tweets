@@ -45,6 +45,8 @@ def get_tweets(tweet_files,ids):
                     if tweet is None:
                         continue
                     tweet = json.loads(tweet)
+                    if "id" not in tweet:
+                        continue
                     if tweet["id"] in ids:
                         tweets.append(tweet)
     return tweets
