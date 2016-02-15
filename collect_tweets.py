@@ -61,6 +61,8 @@ def main():
     args=parser.parse_args()
     daily_files = get_daily_files(args.source_dir)
     for day in daily_files:
+        if day!="2015-10-19":
+            continue
         ids = get_ids(args.list_dir,day)
         print type(ids[0])
         print "for %s there are %d ids" %(day,len(ids))
