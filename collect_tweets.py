@@ -43,15 +43,16 @@ def get_tweets(tweet_files,ids):
         print "find in file",a_file
         data = json.load(open(a_file))
         for tweet in data:
-                if not isinstance(tweet,dict):
-                    if tweet is None:
-                        continue
-                    tweet = json.loads(tweet)
-                if "id" not in tweet:
+            if not isinstance(tweet,dict):
+                if tweet is None:
                     continue
-                if tweet["id"] in ids:
-                    tweets.append(tweet)
-                    print "found!", tweet["id"]
+                tweet = json.loads(tweet)
+            if "id" not in tweet:
+                continue
+            print type(tweets["id"])
+            if tweet["id"] in ids:
+                tweets.append(tweet)
+                print "found!", tweet["id"]
     return tweets
 
 def main():
