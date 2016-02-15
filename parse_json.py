@@ -36,6 +36,7 @@ def parse_tweet_json(day,json_files,no_dup):
             for tweet in data:
                 if not isinstance(tweet,dict):
                     tweet =json.loads(tweet)
+                print tweet
                 text=tweet["text"]
                 text = re.sub(r'https?:\/\/.*[\r\n]*', '', text, flags=re.MULTILINE)
                 if text not in all_tweets:
