@@ -24,15 +24,18 @@ def parse_tweet_json(day,json_files,no_dup):
         for f in json_files:
             data = json.loads(open(f))
             for tweet in data:
+                if not isinstance(tweet,dict):
+                    tweet =json.loads(tweet)
                 text=tweet["text"]
                 text = re.sub(r'https?:\/\/.*[\r\n]*', '', text, flags=re.MULTILINE)
                 content += doc_template.substitute(docid=tweet["id"],text=text)
     else:
         all_tweets = {}
         for f in json_files:
-            print "the file is",f
             data = json.loads(open(f))
             for tweet in data:
+                if not isinstance(tweet,dict):
+                    tweet =json.loads(tweet)
                 text=tweet["text"]
                 text = re.sub(r'https?:\/\/.*[\r\n]*', '', text, flags=re.MULTILINE)
                 if text not in all_tweets:
