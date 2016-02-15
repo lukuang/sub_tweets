@@ -50,6 +50,7 @@ def get_tweets(tweet_files,ids):
                         continue
                     if tweet["id"] in ids:
                         tweets.append(tweet)
+                        print "found!", tweet["id"]
     return tweets
 
 def main():
