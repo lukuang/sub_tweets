@@ -18,7 +18,7 @@ $text
 </DOC>
 """)
 
-def parse_tweet_json(json_file):
+def parse_tweet_json(json_file,no_dup):
     content = ""
     data = json.load(open(json_file))
     if no_dup:
