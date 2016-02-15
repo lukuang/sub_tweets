@@ -56,7 +56,7 @@ def get_daily_files(source_dir):
             day = m.group(1)
             if day not in daily_files:
                 daily_files[day] = []
-            daily_files.append(f)
+            daily_files[day].append(f)
     return daily_files
 
 def main():
