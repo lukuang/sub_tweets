@@ -66,8 +66,8 @@ def main():
     parser.add_argument("data_dir")
     parser.add_argument("index_dir")
     parser.add_argument("result_dir")
-    parser.add_argument("-buildIndex","--b",default="/infolab/node1/ypeilin/bin/IndriBuildIndex_EX")
-    parser.add_argument("-runQuery","--r",default="/infolab/node1/ypeilin/bin/IndriRunQuery_EX")
+    parser.add_argument("--buildIndex","-b",default="/infolab/node1/ypeilin/bin/IndriBuildIndex_EX")
+    parser.add_argument("--runQuery","-r",default="/infolab/node1/ypeilin/bin/IndriRunQuery_EX")
     args=parser.parse_args()
     query = re.sub("_"," ",os.path.basename(args.result_dir))    
     days = os.walk(args.data_dir).next()[2]
