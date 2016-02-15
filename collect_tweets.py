@@ -46,11 +46,11 @@ def get_tweets(tweet_files,ids):
                     if tweet is None:
                         continue
                     tweet = json.loads(tweet)
-                    if "id" not in tweet:
-                        continue
-                    if tweet["id"] in ids:
-                        tweets.append(tweet)
-                        print "found!", tweet["id"]
+                if "id" not in tweet:
+                    continue
+                if tweet["id"] in ids:
+                    tweets.append(tweet)
+                    print "found!", tweet["id"]
     return tweets
 
 def main():
@@ -62,6 +62,7 @@ def main():
     daily_files = get_daily_files(args.source_dir)
     for day in daily_files:
         ids = get_ids(args.list_dir,day)
+        print type(ids[0])
         print "for %s there are %d ids" %(day,len(ids))
         tweets = get_tweets(daily_files[day],ids)
         output = os.path.join(args.dest_dir,day)
