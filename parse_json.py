@@ -25,6 +25,7 @@ def parse_tweet_json(day,json_files,no_dup):
     content = ""
     if no_dup:
         for f in json_files:
+            print f
             data = json.load(open(f))
             for tweet in data:
                 if not isinstance(tweet,dict):
@@ -37,6 +38,7 @@ def parse_tweet_json(day,json_files,no_dup):
     else:
         all_tweets = {}
         for f in json_files:
+            print f
             data = json.load(open(f))
             for tweet in data:
                 if not isinstance(tweet,dict):
