@@ -30,6 +30,8 @@ def parse_tweet_json(day,json_files,no_dup):
             for tweet in data:
                 if not isinstance(tweet,dict):
                     tweet =json.loads(tweet)
+                elif tweet is None:
+                    continue
                 if "text" not in tweet:
                     continue
                 text=tweet["text"]
@@ -43,6 +45,8 @@ def parse_tweet_json(day,json_files,no_dup):
             for tweet in data:
                 if not isinstance(tweet,dict):
                     tweet =json.loads(tweet)
+                elif tweet is None:
+                    continue
                 if "text" not in tweet:
                     continue
                 text=tweet["text"]
