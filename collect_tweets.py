@@ -49,7 +49,7 @@ def get_tweets(tweet_files,ids):
                 tweet = json.loads(tweet)
             if "id" not in tweet:
                 continue
-            print type(tweets["id"])
+            print type(tweet["id"])
             if tweet["id"] in ids:
                 tweets.append(tweet)
                 print "found!", tweet["id"]
