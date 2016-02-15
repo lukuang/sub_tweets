@@ -36,7 +36,7 @@ def main():
     parser.add_argument("dest_dir")
     args=parser.parse_args()
     content = parse_tweet_json(args.json_file)
-    dest_file = os.path.join(dest_dir, os.path.basename(args.json_file))
+    dest_file = os.path.join(args.dest_dir, os.path.basename(args.json_file))
     write_to_xml(dest_file,content)
 
 if __name__=="__main__":
