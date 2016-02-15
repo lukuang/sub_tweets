@@ -18,22 +18,25 @@ $text
 </DOC>
 """)
 
-def parse_tweet_json(json_file,no_dup):
+def parse_tweet_json(day,json_files,no_dup):
     content = ""
-    data = json.load(open(json_file))
     if no_dup:
-        for tweet in data:
-            text=tweet["text"]
-            text = re.sub(r'https?:\/\/.*[\r\n]*', '', text, flags=re.MULTILINE)
-            content += doc_template.substitute(docid=tweet["id"],text=text)
+        for f in json_files:
+            data = json.load(open(f))
+            for tweet in data:
+                text=tweet["text"]
+                text = re.sub(r'https?:\/\/.*[\r\n]*', '', text, flags=re.MULTILINE)
+                content += doc_template.substitute(docid=tweet["id"],text=text)
     else:
         all_tweets = {}
-        for tweet in data:
-            text=tweet["text"]
-            text = re.sub(r'https?:\/\/.*[\r\n]*', '', text, flags=re.MULTILINE)
-            if text not in all_tweets:
-                all_tweets[text] = 0
-                content += doc_template.substitute(docid=tweet["id"],text=text)
+        for f in json_files:
+            data = json.load(open(f))
+            for tweet in data:
+                text=tweet["text"]
+                text = re.sub(r'https?:\/\/.*[\r\n]*', '', text, flags=re.MULTILINE)
+                if text not in all_tweets:
+                    all_tweets[text] = 0
+                    content += doc_template.substitute(docid=tweet["id"],text=text)
 
 
     return content
@@ -56,7 +59,7 @@ def get_daily_files(source_dir):
             day = m.group(1)
             if day not in daily_files:
                 daily_files[day] = []
-            daily_files[day].append(f)
+            daily_files[day].append(os.path.join(source_dir,f))
     return daily_files
 
 def main():
@@ -69,9 +72,7 @@ def main():
     print daily_files
     sys.exit(0)
     for day in daily_files:
-        content = ""
-        for hour in daily_files[day]:
-            content += parse_tweet_json(hour,args.no_dup)
+        content = parse_tweet_json(day,daily_files[day],args.no_dup)
         dest_file = os.path.join(args.dest_dir, day)
         write_to_xml(dest_file,content)
 
