@@ -32,7 +32,7 @@ def get_ids(list_dir,day):
         for line in f:
             line = line.rstrip()
             parts = line.split()
-            print "find id",parts[2]
+            #print "find id",parts[2]
             ids.append(parts[2])
     return ids
 
@@ -40,7 +40,7 @@ def get_ids(list_dir,day):
 def get_tweets(tweet_files,ids):
     tweets = []
     for a_file in tweet_files:
-        print "find in file",a_file
+        #print "find in file",a_file
         data = json.load(open(a_file))
         for tweet in data:
             if not isinstance(tweet,dict):
@@ -52,7 +52,7 @@ def get_tweets(tweet_files,ids):
             #print type(tweet["id"])
             if str(tweet["id"]) in ids:
                 tweets.append(tweet)
-                print "found!", tweet["id"]
+                #print "found!", tweet["id"]
     return tweets
 
 def main():
@@ -63,11 +63,9 @@ def main():
     args=parser.parse_args()
     daily_files = get_daily_files(args.source_dir)
     for day in daily_files:
-        if day!="2015-10-27":
-            continue
         ids = get_ids(args.list_dir,day)
-        print type(ids[0])
-        print "for %s there are %d ids" %(day,len(ids))
+        #print type(ids[0])
+        #print "for %s there are %d ids" %(day,len(ids))
         tweets = get_tweets(daily_files[day],ids)
         output = os.path.join(args.dest_dir,day)
         with open(output,"w") as f:
