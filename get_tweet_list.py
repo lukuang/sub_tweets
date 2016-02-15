@@ -40,7 +40,7 @@ query_para_template = Template("""
 """)
 
 
-def create_index_file(days,index_dir,data_dir,buildIndex):
+def create_index_para_file(days,index_dir,data_dir,buildIndex):
     for day in days:
         index_para_file = os.path.join(index_dir,"index_para_"+day)
         index = os.path.join(index_dir,day)
