@@ -26,7 +26,7 @@ def main():
             old_data = json.load(open(src))
             data +=old_data
             with open(dest,"w") as f:
-                f.write(json.dump(data))
+                f.write(json.dumps(data))
 
 
 
