@@ -9,6 +9,9 @@ import re
 from string import Template
 import argparse
 
+reload(sys)  # Reload does the trick!
+sys.setdefaultencoding('UTF8')
+
 doc_template = Template("""
 <DOC>
 <DOCNO>$docid</DOCNO>
