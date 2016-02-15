@@ -25,13 +25,13 @@ def parse_tweet_json(json_file,no_dup):
         for tweet in data:
             text=tweet["text"]
             print text
-            text = re.sub(r'^https?:\/\/.*[\r\n]*', '', text, flags=re.MULTILINE)
+            text = re.sub(r'https?:\/\/.*[\r\n]*', '', text, flags=re.MULTILINE)
             content += doc_template.substitute(docid=tweet["id"],text=text)
     else:
         all_tweets = {}
         for tweet in data:
             text=tweet["text"]
-            text = re.sub(r'^https?:\/\/.*[\r\n]*', '', text, flags=re.MULTILINE)
+            text = re.sub(r'https?:\/\/.*[\r\n]*', '', text, flags=re.MULTILINE)
             print text
             if text not in all_tweets:
                 all_tweets[text] = 0
