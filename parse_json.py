@@ -69,8 +69,8 @@ def main():
     parser.add_argument("dest_dir")
     args=parser.parse_args()
     daily_files = get_daily_files(args.source_dir)
-    print daily_files
-    sys.exit(0)
+    #print daily_files
+    #sys.exit(0)
     for day in daily_files:
         content = parse_tweet_json(day,daily_files[day],args.no_dup)
         dest_file = os.path.join(args.dest_dir, day)
