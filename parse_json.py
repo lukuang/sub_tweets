@@ -90,8 +90,10 @@ def main():
     #print daily_files
     #sys.exit(0)
     for day in daily_files:
-        content = parse_tweet_json(day,daily_files[day],args.no_dup)
         dest_file = os.path.join(args.dest_dir, day)
+        if os.path.exists(dest_file):
+            continue
+        content = parse_tweet_json(day,daily_files[day],args.no_dup)
         write_to_xml(dest_file,content)
 
 if __name__=="__main__":
