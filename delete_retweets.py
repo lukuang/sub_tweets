@@ -21,7 +21,7 @@ def main():
 
     for json_file in os.walk(args.source_dir).next()[2]:
         content = []
-        dest_file = os.join(args.dest_dir,json_file)
+        dest_file = os.path.join(args.dest_dir,json_file)
         data = json.load(open(os.path.join(args.source_dir,json_file)))
         for tweet in data:
             if not isinstance(tweet,dict):
