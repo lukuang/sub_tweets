@@ -35,6 +35,9 @@ def parse_tweet_json(day,json_files,no_dup):
                 if "text" not in tweet:
                     continue
                 text=tweet["text"]
+                m = re.search("^RT",text)
+                if m is not None:
+                    continue
                 text = re.sub(r'https?:\/\/.*[\r\n]*', '', text, flags=re.MULTILINE)
                 content += doc_template.substitute(docid=tweet["id"],text=text)
     else:
@@ -51,6 +54,9 @@ def parse_tweet_json(day,json_files,no_dup):
                 if "text" not in tweet:
                     continue
                 text=tweet["text"]
+                m = re.search("^RT",text)
+                if m is not None:
+                    continue
                 text = re.sub(r'https?:\/\/.*[\r\n]*', '', text, flags=re.MULTILINE)
                 if text not in all_tweets:
                     all_tweets[text] = 0
